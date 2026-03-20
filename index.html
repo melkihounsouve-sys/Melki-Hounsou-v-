@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Amina Dambaba — Madame Yellow. Consultante LinkedIn, Ghostwriter & Copywriter. 3× Top 1 Content Marketing au Bénin. Transformez votre expertise en clients sur LinkedIn.">
+<meta property="og:title" content="Amina Dambaba — Madame Yellow">
+<meta property="og:description" content="Ghostwriting, Copywriting LinkedIn et Coaching. Vos clients vous cherchent — faites-vous trouver.">
+<title>Amina Dambaba — Madame Yellow</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+<style>
+/* =============================================
+   VARIABLES & RESET
+   ============================================= */
+:root {
+  --cream: #FEFBF0;
+  --cream-dark: #F5F0E0;
+  --black: #0A0A0A;
+  --black-soft: #1A1A1A;
+  --yellow: #F5C400;
+  --yellow-dark: #C49A00;
+  --yellow-pale: #FFF8D6;
+  --white: #FFFFFF;
+  --gray: #6B6B6B;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.07);
+  --shadow-hover: 0 12px 40px rgba(0,0,0,0.13);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* =============================================
+   CUSTOM CURSOR
+   ============================================= */
+.cursor {
+  width: 14px; height: 14px;
+  background: var(--yellow);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: multiply;
+  display: none;
+}
+.cursor.grow { width: 36px; height: 36px; opacity: 0.6; }
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  a, button { cursor: none; }
+  .cursor { display: block; }
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(254, 251, 240, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(245, 196, 0, 0.15);
+  transition: transform var(--transition), box-shadow var(--transition);
+  padding: 0 48px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header.hidden { transform: translateY(-100%); }
+header.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--yellow);
+  object-fit: cover;
+  background: var(--yellow-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--yellow-dark); font-weight: 700;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.header-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.3px;
+}
+.header-name span { color: var(--yellow-dark); }
+
+/* =============================================
+   HAMBURGER — style innovant
+   ============================================= */
+.hamburger {
+  background: none;
+  border: none;
+  width: 44px; height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+  position: relative;
+  z-index: 1001;
+}
+.hamburger:hover { background: var(--yellow-pale); }
+
+/* Icône SVG custom — 3 traits de longueurs différentes */
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+}
+.hamburger-icon span {
+  display: block;
+  height: 2.5px;
+  background: var(--black);
+  border-radius: 3px;
+  transform-origin: left center;
+  transition: width 0.3s ease, transform 0.35s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.25s ease, background 0.3s ease;
+}
+.hamburger-icon span:nth-child(1) { width: 24px; }
+.hamburger-icon span:nth-child(2) { width: 16px; }
+.hamburger-icon span:nth-child(3) { width: 20px; }
+
+/* Etat actif — X bien visible */
+.hamburger.active .hamburger-icon span { background: var(--black); }
+.hamburger.active .hamburger-icon span:nth-child(1) {
+  width: 24px;
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.active .hamburger-icon span:nth-child(3) {
+  width: 24px;
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =============================================
+   OVERLAY sombre derrière le panel
+   ============================================= */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(2px);
+}
+.nav-overlay.open { opacity: 1; pointer-events: all; }
+
+/* =============================================
+   MOBILE NAV — panel depuis la droite
+   ============================================= */
+.mobile-nav {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 72%;
+  max-width: 380px;
+  background: var(--black);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 40px 48px;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: -8px 0 48px rgba(0,0,0,0.4);
+}
+/* Trait jaune haut */
+.mobile-nav::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--yellow), transparent);
+}
+.mobile-nav.open { transform: translateX(0); }
+
+/* Liens */
+.mobile-nav a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  display: block;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.25s ease;
+  opacity: 0;
+  transform: translateX(20px);
+}
+.mobile-nav.open a {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mobile-nav.open a:nth-child(1) { transition: opacity 0.35s 0.08s ease, transform 0.35s 0.08s ease, color 0.25s ease; }
+.mobile-nav.open a:nth-child(2) { transition: opacity 0.35s 0.14s ease, transform 0.35s 0.14s ease, color 0.25s ease; }
+.mobile-nav.open a:nth-child(3) { transition: opacity 0.35s 0.20s ease, transform 0.35s 0.20s ease, color 0.25s ease; }
+.mobile-nav.open a:nth-child(4) { transition: opacity 0.35s 0.26s ease, transform 0.35s 0.26s ease, color 0.25s ease; }
+.mobile-nav a:hover { color: var(--white); }
+.mobile-nav a:last-of-type { border-bottom: none; }
+
+/* CTA */
+.mobile-nav-cta {
+  margin-top: 28px !important;
+  background: var(--yellow) !important;
+  color: var(--black) !important;
+  padding: 14px 28px !important;
+  border-radius: 50px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  border-bottom: none !important;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.35s 0.32s ease, transform 0.35s 0.32s ease, background 0.2s ease !important;
+}
+.mobile-nav.open .mobile-nav-cta {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+.mobile-nav-cta:hover { background: #FFD700 !important; color: var(--black) !important; }
+
+/* =============================================
+   SECTION DEFAULTS
+   ============================================= */
+section { padding: 100px 48px; }
+
+.section-badge {
+  display: inline-block;
+  background: var(--yellow-pale);
+  color: var(--yellow-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+.section-title span { color: var(--yellow-dark); }
+.section-sub {
+  font-size: 17px;
+  color: var(--gray);
+  max-width: 540px;
+  margin-bottom: 56px;
+  line-height: 1.7;
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+#hero {
+  min-height: 100vh;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 160px 64px 80px 64px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 50px;
+  margin-bottom: 32px;
+  width: fit-content;
+  max-width: 100%;
+  animation: fadeInDown 0.8s 0.2s both;
+}
+.hero-badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--black);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+.hero-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 4.5vw, 62px);
+  font-weight: 900;
+  line-height: 1.08;
+  color: var(--black);
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s 0.4s both;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--yellow-dark);
+}
+
+.hero-p {
+  font-size: 17px;
+  color: var(--gray);
+  max-width: 460px;
+  margin-bottom: 44px;
+  line-height: 1.8;
+  animation: fadeInUp 0.8s 0.6s both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s 0.8s both;
+  margin-bottom: 36px;
+}
+
+/* Social proof */
+.hero-social-proof {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: fadeInUp 0.8s 1s both;
+}
+.hero-proof-avatars {
+  display: flex;
+}
+.hero-proof-avatars span {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2.5px solid var(--cream);
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--black);
+  margin-left: -9px;
+}
+.hero-proof-avatars span:first-child { margin-left: 0; }
+.hero-proof-text {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.45;
+}
+.hero-proof-text strong {
+  color: var(--black);
+  font-weight: 700;
+  display: block;
+  font-size: 13px;
+}
+
+.btn-primary {
+  background: var(--black);
+  color: var(--white);
+  padding: 15px 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition);
+  letter-spacing: 0.2px;
+}
+.btn-primary:hover {
+  background: var(--yellow);
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(245, 196, 0, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--black);
+  padding: 15px 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid rgba(10,10,10,0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition);
+}
+.btn-outline:hover {
+  border-color: var(--yellow);
+  color: var(--yellow-dark);
+  transform: translateY(-2px);
+}
+
+/* HERO RIGHT — cadre carré crémeux */
+.hero-right {
+  position: relative;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 90vh;
+}
+.hero-right::before {
+  content: '';
+  position: absolute;
+  left: -60px; top: 50%;
+  transform: translateY(-50%);
+  width: 180px; height: 70%;
+  background: radial-gradient(ellipse at center, rgba(245,196,0,0.22) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-right::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: 50%;
+  transform: translateY(-50%);
+  width: 180px; height: 70%;
+  background: radial-gradient(ellipse at center, rgba(245,196,0,0.14) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-photo-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  z-index: 1;
+}
+.hero-photo-bg { display: none; }
+.hero-photo-accent { display: none; }
+
+.hero-photo {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: calc(100% - 20px);
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  object-fit: cover;
+  object-position: 40% 20%;
+  animation: fadeIn 1s 0.3s both;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.hero-photo-placeholder {
+  width: calc(100% - 20px);
+  aspect-ratio: 4 / 5;
+  height: auto;
+  max-width: none;
+  border-radius: 22px;
+  background: var(--cream-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  animation: fadeIn 1s 0.3s both;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.hero-photo-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 28px,
+    rgba(245,196,0,0.05) 28px,
+    rgba(245,196,0,0.05) 29px
+  );
+}
+.hero-photo-placeholder .photo-icon {
+  font-size: 56px;
+  opacity: 0.2;
+  margin-bottom: 12px;
+  position: relative;
+  color: var(--yellow-dark);
+}
+.hero-photo-placeholder p {
+  font-size: 13px;
+  color: rgba(10,10,10,0.3);
+  position: relative;
+}
+
+/* MARQUEE */
+.marquee-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  background: var(--yellow);
+  padding: 12px 0;
+  overflow: hidden;
+  z-index: 10;
+}
+.marquee-track {
+  display: flex;
+  gap: 0;
+  animation: marquee 18s linear infinite;
+  white-space: nowrap;
+}
+.marquee-track span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.marquee-track span::after {
+  content: '✦';
+  font-size: 10px;
+  color: rgba(10,10,10,0.4);
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* =============================================
+   RESULTS
+   ============================================= */
+#resultats {
+  background: var(--black);
+  padding: 80px 48px;
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.result-item {
+  
+  padding: 48px 24px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.result-item:last-child { border-right: none; }
+.result-item.visible { opacity: 1; transform: translateY(0); }
+.result-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 900;
+  color: var(--yellow);
+  line-height: 1;
+  display: block;
+  margin-bottom: 12px;
+}
+.result-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* =============================================
+   SERVICES
+   ============================================= */
+#services {
+  background: var(--cream);
+  max-width: 100%;
+}
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-header { text-align: left; }
+.services-header .section-sub { margin-bottom: 56px; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 36px 30px;
+  position: relative;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.service-card.visible { opacity: 1; transform: translateY(0); }
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.service-icon {
+  width: 54px; height: 54px;
+  background: var(--yellow-pale);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  color: var(--yellow-dark);
+  margin-bottom: 24px;
+  transition: all var(--transition);
+}
+.service-card:hover .service-icon {
+  background: var(--yellow);
+  color: var(--black);
+}
+.service-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--black);
+  letter-spacing: -0.3px;
+}
+.service-card p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.service-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.2px;
+  transition: color var(--transition), gap var(--transition);
+}
+.service-card:hover .service-link { color: var(--yellow-dark); gap: 10px; }
+
+/* =============================================
+   APPROCHE
+   ============================================= */
+#approche {
+  background: var(--black);
+  color: var(--white);
+}
+.approche-inner { max-width: 900px; margin: 0 auto; }
+.approche-inner .section-title { color: var(--white); text-align: left; }
+.approche-inner .section-sub { color: rgba(255,255,255,0.5); text-align: left; }
+
+/* --- TIMELINE WRAPPER --- */
+.approche-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Ligne verticale centrale */
+.approche-timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(245,196,0,0.4) 8%,
+    rgba(245,196,0,0.4) 92%,
+    transparent 100%
+  );
+}
+
+/* --- CHAQUE ÉTAPE --- */
+.approche-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 0 0 48px 0;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.approche-step.visible { opacity: 1; transform: translateX(0); }
+.approche-step:last-child { padding-bottom: 0; }
+
+/* Icône circulaire */
+.approche-step-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--black-soft);
+  border: 1.5px solid rgba(245,196,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--yellow);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: all var(--transition);
+}
+.approche-step:hover .approche-step-icon {
+  background: var(--yellow);
+  color: var(--black);
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 6px rgba(245,196,0,0.12);
+}
+
+/* Contenu texte */
+.approche-step-body {
+  flex: 1;
+  padding-top: 10px;
+}
+.approche-step-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  opacity: 0.7;
+  margin-bottom: 6px;
+  display: block;
+}
+.approche-step-body h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+.approche-step-body p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.75;
+  max-width: 560px;
+}
+
+/* Touche originale — tag numéro flottant en grand à droite */
+.approche-step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: rgba(245,196,0,0.05);
+  position: absolute;
+  right: 0; top: 0;
+  line-height: 1;
+  pointer-events: none;
+  transition: color var(--transition);
+  user-select: none;
+}
+.approche-step:hover .approche-step-num { color: rgba(245,196,0,0.1); }
+
+/* =============================================
+   COMMENTAIRES
+   ============================================= */
+#commentaires {
+  background: var(--cream);
+  overflow: hidden;
+}
+.comments-inner { max-width: 860px; margin: 0 auto; }
+.comments-inner .section-title { text-align: left; }
+.comments-inner .section-sub { text-align: left; margin-bottom: 48px; }
+
+.carousel {
+  position: relative;
+}
+.carousel-track-wrap { overflow: hidden; border-radius: var(--radius); }
+.carousel-track {
+  display: flex;
+  /* JS controls transform for infinite loop */
+}
+.testimonial-card {
+  min-width: 100%;
+  flex-shrink: 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 52px 56px;
+  position: relative;
+}
+.testimonial-card::before {
+  content: '\201C';
+  font-family: 'Playfair Display', serif;
+  font-size: 120px;
+  color: var(--yellow);
+  position: absolute;
+  top: -10px; left: 40px;
+  line-height: 1;
+  opacity: 0.6;
+}
+.testimonial-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  padding-top: 24px;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.author-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--black);
+  flex-shrink: 0;
+}
+.author-name { font-weight: 700; font-size: 15px; color: var(--black); }
+.author-role { font-size: 13px; color: var(--gray); }
+.author-stars { color: var(--yellow); font-size: 13px; margin-top: 2px; }
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 32px;
+}
+.carousel-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(10,10,10,0.07);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  color: var(--black);
+  transition: all var(--transition);
+}
+.carousel-btn:hover { background: var(--yellow); color: var(--black); transform: scale(1.05); }
+
+.carousel-dots {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(10,10,10,0.13);
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1),
+              border-radius 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+/* Effet sablier : le jaune tombe du haut vers le bas */
+.dot::before {
+  content: '';
+  position: absolute;
+  left: -20%; right: -20%;
+  top: -100%;
+  height: 100%;
+  background: var(--yellow);
+  transition: top 0.55s cubic-bezier(0.6,0,0.4,1);
+  border-radius: 0 0 50% 50%;
+}
+.dot.active {
+  width: 36px;
+  border-radius: 5px;
+}
+.dot.active::before {
+  top: 0;
+  border-radius: 0;
+}
+
+/* =============================================
+   À PROPOS
+   ============================================= */
+#apropos {
+  background: var(--cream-dark);
+}
+.apropos-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.apropos-img-wrap {
+  position: relative;
+}
+.apropos-img {
+  /* balise <img> — remplit le cadre sans crop exagéré */
+  display        : block;
+  width          : 100%;
+  aspect-ratio   : 3 / 4;
+  border-radius  : var(--radius);
+  object-fit     : cover;
+  object-position: 50% 20%;   /* centre légèrement vers le haut = visage visible */
+}
+.apropos-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(245,196,0,0.03) 30px, rgba(245,196,0,0.03) 60px);
+}
+.apropos-badge-float {
+  position: absolute;
+  bottom: -20px; right: -20px;
+  background: var(--yellow);
+  color: var(--black);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  box-shadow: 0 12px 40px rgba(245,196,0,0.25);
+  
+}
+.apropos-badge-float strong { display: block; font-size: 22px; font-weight: 900; font-family: 'Playfair Display', serif; }
+.apropos-badge-float span { font-size: 11px; font-weight: 600; letter-spacing: 1px; opacity: 0.7; text-transform: uppercase; }
+
+.apropos-content {}
+.apropos-content .section-badge { margin-bottom: 16px; }
+.apropos-story {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+.apropos-story strong { color: var(--black); font-weight: 600; }
+
+.apropos-milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.milestone {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--yellow);
+  transition: all var(--transition);
+}
+.milestone:hover { transform: translateX(6px); box-shadow: var(--shadow); }
+.milestone-icon { color: var(--yellow-dark); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+.milestone-text { font-size: 14px; color: var(--gray); }
+.milestone-text strong { color: var(--black); display: block; font-size: 14px; margin-bottom: 2px; }
+
+/* =============================================
+   FAQ
+   ============================================= */
+#faq {
+  background: var(--cream);
+}
+.faq-inner { max-width: 860px; margin: 0 auto; }
+.faq-inner .section-title { text-align: left; }
+.faq-inner .section-sub { text-align: left; }
+
+.faq-toggle {
+  display: flex;
+  gap: 8px;
+  background: var(--black);
+  padding: 6px;
+  border-radius: 50px;
+  width: fit-content;
+  margin-bottom: 48px;
+}
+.faq-toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  transition: all var(--transition);
+}
+.faq-toggle-btn.active {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-panel { display: none; }
+.faq-panel.active { display: block; }
+
+.faq-item {
+  border-bottom: 1px solid rgba(10,10,10,0.1);
+  border-left: 2px solid transparent;
+  padding: 0;
+  transition: border-color var(--transition);
+}
+.faq-item.open { border-left-color: var(--yellow); }
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  transition: color var(--transition);
+}
+.faq-question:hover { color: var(--yellow-dark); }
+.faq-chevron {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--yellow-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  color: var(--yellow-dark);
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+.faq-item.open .faq-chevron { background: var(--yellow); transform: rotate(180deg); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+}
+.faq-answer-inner {
+  padding: 0 20px 24px 20px;
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.75;
+}
+
+/* =============================================
+   CTA
+   ============================================= */
+#cta {
+  background: var(--black);
+  padding: 100px 48px;
+}
+.cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+.cta-inner .section-title { color: var(--white); margin-bottom: 16px; text-align: left; }
+.cta-inner .section-sub { color: rgba(255,255,255,0.5); margin-bottom: 52px; text-align: left; }
+
+.cta-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.cta-card {
+  background: var(--black-soft);
+  border-radius: var(--radius);
+  padding: 36px 30px;
+  border: 1px solid rgba(255,255,255,0.07);
+  text-align: left;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.cta-card:hover::before { transform: scaleX(1); }
+.cta-card:hover { border-color: rgba(245,196,0,0.2); transform: translateY(-4px); }
+
+.cta-card-icon {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-sm);
+  background: rgba(245,196,0,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  color: var(--yellow);
+  margin-bottom: 20px;
+}
+.cta-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.cta-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+.btn-yellow {
+  background: var(--yellow);
+  color: var(--black);
+  padding: 13px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  transition: all var(--transition);
+  width: 100%;
+  justify-content: center;
+}
+.btn-yellow:hover { background: #FFD700; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,196,0,0.3); }
+
+/* FORM */
+.cta-form { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.cta-form input, .cta-form textarea, .cta-form select {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--white);
+  transition: border-color var(--transition);
+  outline: none;
+}
+.cta-form-select {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  outline: none;
+  transition: border-color var(--transition);
+}
+.cta-form-select:focus { border-color: var(--yellow); }
+.cta-form-select option { background: var(--black-soft); color: var(--white); }
+.cta-form input::placeholder, .cta-form textarea::placeholder { color: rgba(255,255,255,0.25); }
+.cta-form input:focus, .cta-form textarea:focus { border-color: var(--yellow); }
+.cta-form textarea { resize: none; height: 80px; }
+
+/* =============================================
+   WHATSAPP FLOTTANT
+   ============================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--yellow);
+  color: var(--black);
+  border-radius: 50px;
+  padding: 14px 18px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 8px 32px rgba(245,196,0,0.4);
+  transition: gap 0.35s cubic-bezier(0.4,0,0.2,1),
+              padding 0.35s cubic-bezier(0.4,0,0.2,1),
+              box-shadow 0.35s ease,
+              transform 0.35s ease;
+  overflow: hidden;
+  cursor: none;
+}
+.whatsapp-float i {
+  font-size: 22px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.whatsapp-float-label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.4s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.3s ease;
+  opacity: 0;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+}
+.whatsapp-float:hover {
+  box-shadow: 0 12px 40px rgba(245,196,0,0.55);
+  transform: translateY(-3px);
+}
+.whatsapp-float.expanded {
+  gap: 10px;
+  padding: 14px 22px;
+}
+.whatsapp-float.expanded .whatsapp-float-label {
+  max-width: 160px;
+  opacity: 1;
+}
+.whatsapp-float.expanded i { transform: rotate(-10deg) scale(1.1); }
+
+/* Pulse ring */
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  border: 2px solid rgba(245,196,0,0.6);
+  animation: waPulse 2.5s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes waPulse {
+  0%   { transform: scale(1); opacity: 0.7; }
+  70%  { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: #050505;
+  padding: 64px 48px 32px;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 32px;
+}
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.75;
+  max-width: 280px;
+  margin: 12px 0 20px;
+}
+.footer-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+}
+.footer-brand-name span { color: var(--yellow); }
+
+.footer-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+.social-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.social-btn:hover { background: var(--yellow); color: var(--black); }
+
+.footer-col h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-col ul li a:hover { color: var(--yellow); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+}
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a {
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media(max-width: 900px) {
+  #hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 140px 32px 0; order: 1; }
+  .hero-right { min-height: 60vw; order: 2; }
+  .hero-photo-placeholder { width: 65%; height: 55vw; }
+  .results-grid { grid-template-columns: repeat(2, 1fr); }
+  .result-item:nth-child(2) { border-right: none; }
+  .result-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.07); }
+  .result-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.07); border-right: none; }
+  .approche-timeline { padding-left: 0; }
+  .apropos-inner { grid-template-columns: 1fr; gap: 40px; }
+  .cta-options { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  section { padding: 80px 32px; }
+  header { padding: 0 24px; }
+}
+
+@media(max-width: 600px) {
+  .hero-left { padding: 120px 24px 0; }
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-outline { justify-content: center; }
+  .results-grid { grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .approche-step { gap: 18px; }
+  .testimonial-card { padding: 40px 28px; }
+  .footer-top { grid-template-columns: 1fr; }
+  section { padding: 64px 20px; }
+  header { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+
+<!-- WHATSAPP FLOTTANT -->
+<a class="whatsapp-float"
+   href="https://wa.me/2290145714700?text=Bonjour%20Amina%20%F0%9F%91%8B%2C%20je%20viens%20de%20visiter%20ton%20site%20et%20je%20voudrais%20discuter%20de%20mon%20projet%20LinkedIn%20avec%20toi."
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Écrire sur WhatsApp">
+  <svg viewBox="0 0 448 512" style="width:22px;height:22px;fill:currentColor;flex-shrink:0;transition:transform 0.3s ease;">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
+  <span class="whatsapp-float-label">Discutons sur WhatsApp</span>
+</a>
+
+<!-- OVERLAY (fond sombre derrière le panel) -->
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+<!-- MOBILE NAV — panel 2/3 depuis la droite -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="closeNav()">Services</a>
+  <a href="#approche" onclick="closeNav()">Approche</a>
+  <a href="#apropos" onclick="closeNav()">À propos</a>
+  <a href="#faq" onclick="closeNav()">FAQ</a>
+  <a href="#cta" class="mobile-nav-cta" onclick="closeNav()">Prendre rendez-vous</a>
+</nav>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-left">
+    <div class="header-avatar">A</div>
+    <span class="header-name">Amina <span>Dambaba</span></span>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <div class="hamburger-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+</header>
+
+<!-- =============================================
+     HERO
+     ============================================= -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Madame Yellow · 3× Top 1 Content Marketing</div>
+    <h1 class="hero-h1">
+      Tu postes sur LinkedIn.<br>
+      <em>Mais est-ce que ça<br>te ramène des clients ?</em>
+    </h1>
+    <p class="hero-p">
+      Je suis Amina Dambaba — Madame Yellow. J'écris les mots qui font que ton profil LinkedIn devient une machine à opportunités : ghostwriting sur mesure, copywriting qui convertit, coaching stratégique. Mes clients n'attendent plus qu'on les trouve — ils sont trouvés.
+    </p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">
+        <i class="fa-solid fa-bolt"></i> Voir mes services
+      </a>
+      <a href="#apropos" class="btn-outline">
+        <i class="fa-regular fa-user"></i> Mon histoire
+      </a>
+    </div>
+    <div class="hero-social-proof">
+      <div class="hero-proof-avatars">
+        <span>S</span><span>M</span><span>F</span><span>R</span>
+      </div>
+      <div class="hero-proof-text">
+        <strong>+40 clients satisfaits</strong>
+        dont certains sur 12 mois de collaboration
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="amina.jpg" alt="Amina Dambaba — Madame Yellow">
+    </div>
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+      <div class="marquee-track" id="marqueeTrack">
+        <span>Copywriting LinkedIn</span>
+        <span>Ghostwriting</span>
+        <span>Coaching Dirigeants</span>
+       <span>Rédaction S.E.O</span>
+        <span>Landing Page</span>
+        <span>Personal Branding</span>
+        <span>Copywriting LinkedIn</span>
+        <span>Ghostwriting</span>
+        <span>Rédaction S.E.O</span>
+        <span>Landing Page</span>
+        <span>Copywriting LinkedIn</span>
+        <span>Personal Branding</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     RÉSULTATS
+     ============================================= -->
+<section id="resultats">
+  <div class="results-grid">
+    <div class="result-item">
+      <span class="result-number" data-target="40" data-prefix="+">0</span>
+      <span class="result-label">Clients satisfaits</span>
+    </div>
+    <div class="result-item">
+      <span class="result-number" data-target="13" data-prefix="" data-suffix="k">0</span>
+      <span class="result-label">Abonnés LinkedIn</span>
+    </div>
+    <div class="result-item">
+      <span class="result-number" data-target="98" data-suffix="%">0</span>
+      <span class="result-label">Taux de satisfaction</span>
+    </div>
+    <div class="result-item">
+      <span class="result-number" data-target="150" data-prefix="+">0</span>
+      <span class="result-label">Personnes formées</span>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     SERVICES
+     ============================================= -->
+<section id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div class="section-badge">Ce que je fais</div>
+      <h2 class="section-title">Choisis comment tu veux<br>être <span>visible.</span></h2>
+      <p class="section-sub">Trois façons de travailler avec Madame Yellow. Une seule direction : qu'on te trouve.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3>Copywriting LinkedIn</h3>
+        <p>Des textes qui parlent à ton client idéal et le poussent à agir. Je crée des publications qui captent l'attention dès les premières secondes et transforment tes abonnés en prospects qualifiés.</p>
+        <a href="#cta" class="service-link">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-pen"></i></div>
+        <h3>Ghostwriting</h3>
+        <p>Sois présent(e) sur LinkedIn sans y passer du temps. Je prends en charge la rédaction de tes publications et la gestion de ta stratégie de contenu à ta place.</p>
+        <a href="#cta" class="service-link">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Création de Landing Page</h3>
+        <p>Transforme tes visiteurs en acheteurs avec une page qui convainc. Je conçois ta page de vente complète pour valoriser ton offre et maximiser tes conversions.</p>
+        <a href="#cta" class="service-link">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Coaching Dirigeants</h3>
+        <p>Apprends à devenir ta propre machine à clients sur LinkedIn. Un accompagnement individuel et à distance pour maîtriser le copywriting et générer des prospects sans prospection directe.</p>
+        <a href="#cta" class="service-link">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     APPROCHE
+     ============================================= -->
+<section id="approche">
+  <div class="approche-inner">
+    <div class="reveal" style="margin-bottom:56px;">
+      <div class="section-badge" style="background:rgba(245,196,0,0.12); color:var(--yellow);">Pourquoi moi ?</div>
+      <h2 class="section-title">Ce que tu obtiens en<br>travaillant avec <span>Madame Yellow</span></h2>
+      <p class="section-sub">Des raisons concrètes — pas des promesses vides.</p>
+    </div>
+    <div class="approche-timeline">
+
+      <div class="approche-step">
+        <div class="approche-step-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="approche-step-body">
+          <span class="approche-step-tag">Étape 01</span>
+          <h3>Rapidité d'exécution</h3>
+          <p>Je suis très rapide à l'écrit. Tes contenus sont livrés dans des délais courts, sans compromis sur la qualité.</p>
+        </div>
+        <div class="approche-step-num">01</div>
+      </div>
+
+      <div class="approche-step">
+        <div class="approche-step-icon"><i class="fa-solid fa-fingerprint"></i></div>
+        <div class="approche-step-body">
+          <span class="approche-step-tag">Étape 02</span>
+          <h3>Solution 100 % personnalisée</h3>
+          <p>Chaque collaboration est unique. Je m'adapte à ton secteur, ta voix et tes objectifs. Aucun copié-collé.</p>
+        </div>
+        <div class="approche-step-num">02</div>
+      </div>
+
+      <div class="approche-step">
+        <div class="approche-step-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+        <div class="approche-step-body">
+          <span class="approche-step-tag">Étape 03</span>
+          <h3>Impact durable</h3>
+          <p>Tes contenus continuent de générer des opportunités et de la visibilité bien après leur publication.</p>
+        </div>
+        <div class="approche-step-num">03</div>
+      </div>
+
+      <div class="approche-step">
+        <div class="approche-step-icon"><i class="fa-solid fa-medal"></i></div>
+        <div class="approche-step-body">
+          <span class="approche-step-tag">Étape 04</span>
+          <h3>Expertise prouvée</h3>
+          <p>Top 1 Content Marketing & Copywriting au Bénin (Favikon 2024). Des résultats concrets, même dans les marchés compétitifs.</p>
+        </div>
+        <div class="approche-step-num">04</div>
+      </div>
+
+      <div class="approche-step">
+        <div class="approche-step-icon"><i class="fa-solid fa-heart"></i></div>
+        <div class="approche-step-body">
+          <span class="approche-step-tag">Étape 05</span>
+          <h3>Accompagnement humain</h3>
+          <p>Tu n'es pas un numéro. Je suis disponible, à l'écoute, et investie à 100 % dans ta réussite sur LinkedIn.</p>
+        </div>
+        <div class="approche-step-num">05</div>
+      </div>
+
+      <div class="approche-step">
+        <div class="approche-step-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="approche-step-body">
+          <span class="approche-step-tag">Étape 06</span>
+          <h3>Communauté de confiance</h3>
+          <p>Plus de 8 000 abonnés et 40+ clients satisfaits. Une réputation construite sur des résultats, pas sur des promesses.</p>
+        </div>
+        <div class="approche-step-num">06</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     COMMENTAIRES
+     ============================================= -->
+<section id="commentaires">
+  <div class="comments-inner">
+    <div class="reveal">
+      <div class="section-badge">Témoignages</div>
+      <h2 class="section-title">Ce que disent ceux qui<br>ont <span>sauté le pas</span></h2>
+      <p class="section-sub">Mes clients parlent mieux de moi que je ne le ferais moi-même.</p>
+    </div>
+    <div class="carousel reveal">
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carouselTrack">
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">Depuis que je travaille avec Amina, mon LinkedIn a complètement changé. En deux mois, j'ai reçu 3 demandes de collaboration directement dans mes messages. Elle comprend vraiment mon univers et écrit avec ma voix.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">S</div>
+              <div>
+                <div class="author-name">Sarah K.</div>
+                <div class="author-role">Coach Business · Bénin</div>
+                <div class="author-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">J'hésitais à investir dans du ghostwriting. Aujourd'hui je regrette de ne pas l'avoir fait plus tôt. Amina a une façon unique de transformer des idées floues en contenus percutants. Mon profil LinkedIn est méconnaissable.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">M</div>
+              <div>
+                <div class="author-name">Marcus D.</div>
+                <div class="author-role">Consultant RH · Côte d'Ivoire</div>
+                <div class="author-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">Le Yellow Program m'a appris à écrire pour mon audience et non pour moi. En 3 semaines de contenu appliqué, j'ai décroché mon premier client LinkedIn. Amina livre bien plus que ce qu'elle promet.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">F</div>
+              <div>
+                <div class="author-name">Fatou N.</div>
+                <div class="author-role">Freelance Design · Sénégal</div>
+                <div class="author-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">Ma landing page a converti dès le premier jour. Amina a su capturer exactement ce que mon offre apporte et le formuler de façon à déclencher l'action. Un travail vraiment remarquable.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">R</div>
+              <div>
+                <div class="author-name">Romuald A.</div>
+                <div class="author-role">Entrepreneur Digital · Togo</div>
+                <div class="author-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" aria-label="Précédent">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn" aria-label="Suivant">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     À PROPOS
+     ============================================= -->
+<section id="apropos">
+  <div class="apropos-inner">
+    <div class="apropos-img-wrap reveal">
+
+
+
+      <img class="apropos-img" src="amina 2.jpg" alt="Amina Dambaba — Madame Yellow">
+      <div class="apropos-badge-float">
+        <strong>Top 1</strong>
+        <span>Bénin · 2024</span>
+      </div>
+    </div>
+    <div class="apropos-content reveal">
+      <div class="section-badge">Mon histoire</div>
+      <h2 class="section-title">Comment une étudiante en droit est devenue <span>Madame Yellow</span></h2>
+      <p class="apropos-story">
+        Tout commence en <strong>avril 2021</strong>. Étudiante en droit, passionnée d'écriture depuis l'enfance, je cherche un moyen d'arrondir mes fins de mois. Je tombe sur la rédaction web — une évidence. Deux ans de pratique plus tard, je réalise que le droit n'est pas ma voie. Je prends une décision audacieuse : suivre ma passion. <strong>Début 2023</strong>, je découvre le copywriting sur les réseaux sociaux. Une révélation. Mon premier post LinkedIn m'apporte mon premier client.
+      </p>
+      <div class="apropos-milestones">
+        <div class="milestone">
+          <div class="milestone-icon"><i class="fa-solid fa-users"></i></div>
+          <div class="milestone-text">
+            <strong>+8 000 abonnés sur LinkedIn</strong>
+            Une communauté fidèle et ultra-qualifiée, construite post après post.
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-icon"><i class="fa-solid fa-medal"></i></div>
+          <div class="milestone-text">
+            <strong>Top 1 Content Marketing & Copywriting — Favikon 2024</strong>
+            Classée parmi les meilleurs créateurs d'Afrique de l'Ouest.
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="milestone-text">
+            <strong>+150 personnes lancées sur LinkedIn</strong>
+            Via mon challenge gratuit — visibilité et premières opportunités garanties.
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div class="milestone-text">
+            <strong>+40 clients accompagnés</strong>
+            Dont certains sur 12 mois de collaboration continue.
+          </div>
+        </div>
+      </div>
+      <a href="#cta" class="btn-primary" style="width:fit-content;">
+        <i class="fa-brands fa-whatsapp"></i> Parlons de ton projet
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FAQ
+     ============================================= -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="reveal" style="margin-bottom:48px;">
+      <div class="section-badge">Questions fréquentes</div>
+      <h2 class="section-title">Tu as des questions ?<br><span>J'ai les réponses.</span></h2>
+      <p class="section-sub">Tout ce que tu veux savoir avant de faire le premier pas.</p>
+    </div>
+    <div class="faq-toggle reveal">
+      <button class="faq-toggle-btn active" onclick="switchFaq('general', this)">Général</button>
+      <button class="faq-toggle-btn" onclick="switchFaq('coaching', this)">Coaching</button>
+      <button class="faq-toggle-btn" onclick="switchFaq('yellowbooster', this)">Yellow Booster</button>
+    </div>
+
+    <!-- GÉNÉRAL -->
+    <div class="faq-list faq-panel active" id="faq-general">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Comment fonctionne une collaboration avec toi ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">On commence par un appel de 15 minutes pour comprendre ton projet, tes objectifs et ton client idéal. Ensuite, je te propose une offre adaptée à tes besoins. Une fois que tu valides, on démarre. Je livre dans les délais convenus et tu restes informé(e) à chaque étape.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Est-ce que tu peux écrire à la place de quelqu'un d'autre ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">C'est exactement ce que fait le ghostwriting. J'adopte ta voix, ton style, ta personnalité pour écrire des contenus qui te ressemblent parfaitement. Tes abonnés ne sauront pas que ce n'est pas toi — parce que ça l'est, juste avec ma plume.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Dans combien de temps peut-on voir des résultats ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Les premiers résultats (engagement, visibilité, messages entrants) apparaissent généralement entre 3 et 8 semaines avec une stratégie de contenu régulière. Les résultats en termes de clients varient selon l'offre et la régularité. Mon premier client personnel est venu dès le premier post — mais ce n'est pas la règle. La régularité est la clé.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Tu travailles avec quels types de clients ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Je travaille principalement avec des coaches, consultants, freelances et dirigeants d'entreprise qui souhaitent développer leur visibilité sur LinkedIn. Je travaille à distance avec des clients d'Afrique francophone et au-delà.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COACHING -->
+    <div class="faq-list faq-panel" id="faq-coaching">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          En quoi consiste le Yellow Program ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Le Yellow Program est un accompagnement individuel à distance pour maîtriser le copywriting LinkedIn et générer tes premiers clients sur le réseau. On travaille ensemble sur ta stratégie de contenu, ton positionnement, ta voix éditoriale et la rédaction de tes posts.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quelle est la durée du programme de coaching ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Le programme s'adapte à tes objectifs. Certains clients commencent avec un accompagnement de 3 mois, d'autres vont jusqu'à 12 mois. On définit ensemble la durée qui correspond le mieux à tes ambitions lors de notre premier appel.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Le coaching est-il fait pour les débutants ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Oui ! Le Yellow Program accueille aussi bien les débutants complets sur LinkedIn que les personnes qui publient déjà mais n'obtiennent pas les résultats escomptés. L'accompagnement est entièrement personnalisé à ton niveau.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YELLOW BOOSTER -->
+    <div class="faq-list faq-panel" id="faq-yellowbooster">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          C'est quoi le Yellow Booster ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Le Yellow Booster est mon produit digital phare. C'est une boîte à ressources complète qui te donne accès à 7 guides pratiques pour créer des posts engageants sur LinkedIn, même si tu ne sais pas par où commencer.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quelle est la différence entre le Yellow Booster et les ressources gratuites ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Les ressources gratuites te donnent une introduction aux concepts clés. Le Yellow Booster va beaucoup plus loin : 7 ressources approfondies, des frameworks complets, des templates directement applicables et une méthodologie pour créer du contenu de façon régulière et efficace.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Comment accéder au Yellow Booster après l'achat ?
+          <span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Après ton achat, tu reçois immédiatement un lien d'accès par email. Tout est disponible en téléchargement direct, sans abonnement ni délai. Tu accèdes à toutes les ressources en moins de 5 minutes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     CTA
+     ============================================= -->
+<section id="cta">
+  <div class="cta-inner">
+    <div class="reveal">
+      <div class="section-badge" style="background:rgba(245,196,0,0.12); color:var(--yellow);">Passons à l'action</div>
+      <h2 class="section-title">Tu as lu jusqu'ici.<br><span>Il ne reste qu'un geste.</span></h2>
+      <p class="section-sub">Discutons de ton projet sur WhatsApp ou réserve un créneau directement dans mon agenda.</p>
+    </div>
+    <div class="cta-options reveal">
+
+      <!-- WHATSAPP DIRECT -->
+      <div class="cta-card">
+        <div class="cta-card-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <h3>Discuter sur WhatsApp</h3>
+        <p>Un message rapide pour me parler de ton projet. Je réponds dans les 24h et on voit ensemble quelle offre te correspond.</p>
+        <a id="btn-whatsapp-direct"
+           href="https://wa.me/2290145714700?text=Bonjour%20Amina%20%F0%9F%91%8B%2C%20je%20viens%20de%20visiter%20ton%20site%20et%20je%20voudrais%20discuter%20de%20mon%20projet%20LinkedIn%20avec%20toi."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-yellow">
+          <i class="fa-brands fa-whatsapp"></i> M'écrire sur WhatsApp
+        </a>
+      </div>
+
+      <!-- FORMULAIRE DE RÉSERVATION -->
+      <div class="cta-card">
+        <div class="cta-card-icon"><i class="fa-regular fa-calendar-check"></i></div>
+        <h3>Réserver un appel de 15 min</h3>
+        <p>Un appel gratuit, sans engagement. On fait connaissance et on définit ensemble comment je peux t'aider.</p>
+        <div class="cta-form" id="booking-form">
+          <input id="form-name"    type="text"  placeholder="Ton prénom et nom *" required>
+          <input id="form-email"   type="email" placeholder="Ton email *" required>
+          <select id="form-service" class="cta-form-select">
+            <option value="" disabled selected>Quel service t'intéresse ?</option>
+            <option value="Ghostwriting">Ghostwriting</option>
+            <option value="Copywriting LinkedIn">Copywriting LinkedIn</option>
+            <option value="Création de Landing Page">Création de Landing Page</option>
+            <option value="Coaching Dirigeants">Coaching Dirigeants</option>
+          </select>
+          <textarea id="form-message" placeholder="Ton projet en quelques mots..."></textarea>
+          <button id="btn-booking-submit" class="btn-yellow" type="button">
+            <i class="fa-regular fa-calendar"></i> Réserver mon créneau
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+     ============================================= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Amina <span>Dambaba</span></div>
+        <p>Consultante LinkedIn, Ghostwriter & Copywriter. Je transforme ton expertise en contenu qui attire tes clients naturellement.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="social-btn" title="Email"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#hero">Accueil</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#approche">Approche</a></li>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#cta">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="#">Mon premier client LinkedIn</a></li>
+          <li><a href="#">100 idées de posts</a></li>
+          <li><a href="#">Plan de Landing Page</a></li>
+          <li><a href="#">Yellow Booster</a></li>
+          <li><a href="#">Yellow Program</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Amina Dambaba</p>
+      <div class="footer-legal">
+        <a href="#">Par Melki Hounsou-vê</a>
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =============================================
+     JAVASCRIPT
+     ============================================= -->
+<script>
+// --- ANNÉE COPYRIGHT ---
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// --- CURSOR ---
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .dot, .faq-item').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+});
+
+// --- HEADER SCROLL ---
+let lastScroll = 0;
+const header = document.getElementById('mainHeader');
+const waFloat = document.querySelector('.whatsapp-float');
+window.addEventListener('scroll', () => {
+  const current = window.scrollY;
+  const scrollingDown = current > lastScroll && current > 100;
+  if (scrollingDown) {
+    header.classList.add('hidden');
+    if (waFloat) waFloat.classList.remove('expanded');
+  } else {
+    header.classList.remove('hidden');
+    if (waFloat && current > 200) waFloat.classList.add('expanded');
+    else if (waFloat) waFloat.classList.remove('expanded');
+  }
+  if (current > 20) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+  lastScroll = current <= 0 ? 0 : current;
+});
+
+// --- NAV TOGGLE ---
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const navOverlay = document.getElementById('navOverlay');
+
+function toggleNav() {
+  const isOpen = mobileNav.classList.contains('open');
+  hamburger.classList.toggle('active');
+  mobileNav.classList.toggle('open');
+  navOverlay.classList.toggle('open');
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+function closeNav() {
+  hamburger.classList.remove('active');
+  mobileNav.classList.remove('open');
+  navOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// --- SCROLL REVEAL ---
+const reveals = document.querySelectorAll('.reveal, .result-item, .service-card');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80 * (
+        Array.from(entry.target.parentNode.children).indexOf(entry.target)
+      ));
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => revealObserver.observe(el));
+
+// --- COUNTER ANIMATION ---
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    el.textContent = prefix + (target >= 1000
+      ? Math.floor(current).toLocaleString('fr')
+      : Math.floor(current)) + suffix;
+  }, 16);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.result-number').forEach(animateCounter);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+const resultsSection = document.getElementById('resultats');
+if (resultsSection) counterObserver.observe(resultsSection);
+
+// --- CAROUSEL INFINI (une seule direction, sans bond) ---
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const dotsContainer = document.getElementById('carouselDots');
+  if (!track) return;
+
+  const origSlides = Array.from(track.children);
+  const total = origSlides.length;
+
+  // Cloner tous les slides à la fin pour la boucle seamless
+  origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+
+  let current = 0;
+  let isTransitioning = false;
+
+  function getW() { return track.parentElement.clientWidth; }
+
+  function setWidths() {
+    const w = getW();
+    Array.from(track.children).forEach(s => {
+      s.style.minWidth = w + 'px';
+      s.style.width = w + 'px';
+    });
+  }
+
+  function moveTo(idx, animate) {
+    const w = getW();
+    track.style.transition = animate ? 'transform 0.6s cubic-bezier(0.4,0,0.2,1)' : 'none';
+    track.style.transform = `translateX(-${idx * w}px)`;
+    if (!animate) track.getBoundingClientRect();
+  }
+
+  window.addEventListener('resize', () => { setWidths(); moveTo(current, false); });
+
+  function updateDots() {
+    dotsContainer.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current % total);
+    });
+  }
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    origSlides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function next() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    current++;
+    moveTo(current, true);
+    updateDots();
+  }
+
+  track.addEventListener('transitionend', () => {
+    // Arrivé sur un clone → on se téléporte silencieusement au vrai slide correspondant
+    if (current >= total) {
+      current = current % total;
+      moveTo(current, false);
+    }
+    isTransitioning = false;
+  });
+
+  // Les deux boutons avancent dans la même direction
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  if (nextBtn) nextBtn.addEventListener('click', next);
+  if (prevBtn) prevBtn.addEventListener('click', next);
+
+  buildDots();
+  setWidths();
+  moveTo(current, false);
+  setInterval(next, 4500);
+
+  // Swipe mobile
+  let touchStartX = 0;
+  track.parentElement.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.parentElement.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) next();
+  }, { passive: true });
+})();
+
+// --- FAQ ---
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+
+  item.closest('.faq-list').querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-answer').style.maxHeight = null;
+  });
+
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+function switchFaq(tab, btn) {
+  document.querySelectorAll('.faq-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.faq-toggle-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('faq-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+
+// --- SERVICE CARDS STAGGER ---
+const serviceCards = document.querySelectorAll('.service-card');
+const serviceObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(serviceCards).indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 120);
+      serviceObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+serviceCards.forEach(c => serviceObserver.observe(c));
+
+// --- RÉSERVATION — ENVOI VIA WHATSAPP ---
+const WHATSAPP_NUMBER = '2290145714700'; // +229 01 45 71 47 00 (format 10 chiffres Bénin)
+
+document.getElementById('btn-booking-submit').addEventListener('click', function () {
+  const name    = document.getElementById('form-name').value.trim();
+  const email   = document.getElementById('form-email').value.trim();
+  const service = document.getElementById('form-service').value;
+  const message = document.getElementById('form-message').value.trim();
+
+  // Validation basique
+  if (!name) {
+    alert('Merci de renseigner ton prénom et nom.');
+    document.getElementById('form-name').focus();
+    return;
+  }
+  if (!email || !email.includes('@')) {
+    alert('Merci de renseigner un email valide.');
+    document.getElementById('form-email').focus();
+    return;
+  }
+
+  // Construction du message WhatsApp
+  const lines = [
+    '👋 Bonjour Amina, je voudrais réserver un appel de 15 min.',
+    '',
+    '📋 *Mes informations :*',
+    '• Nom : ' + name,
+    '• Email : ' + email,
+    service ? '• Service souhaité : ' + service : '',
+    message ? '• Mon projet : ' + message : '',
+  ].filter(Boolean).join('\n');
+
+  const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines);
+  window.open(url, '_blank', 'noopener,noreferrer');
+});
+
+const approcheCards = document.querySelectorAll('.approche-step');
+const approcheObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(approcheCards).indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 100);
+      approcheObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+approcheCards.forEach(c => approcheObserver.observe(c));
+</script>
+
+</body>
+</html>
